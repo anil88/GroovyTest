@@ -1,5 +1,6 @@
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyShell;
+import groovy.lang.GroovySystem;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
@@ -66,6 +67,7 @@ public class TestGroovy {
 
     @Test
     public void scriptCanNotBeLoaded_exception() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        System.out.println("GroovyVersion:" + GroovySystem.getVersion());
         groovyClassLoader.addClasspath(scriptsHome.getPath());
         final Class<?> a = groovyClassLoader.loadClass("pkg2.A");
         a.newInstance();
@@ -74,6 +76,7 @@ public class TestGroovy {
 
     @Test
     public void scriptCanBeLoaded_success() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        System.out.println("GroovyVersion:" + GroovySystem.getVersion());
         final File scriptA = new File(pkg1 + File.separator + "B.groovy");
         final File scriptB = new File(pkg2 + File.separator + "A.groovy");
 
